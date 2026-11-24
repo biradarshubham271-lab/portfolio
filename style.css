@@ -1,0 +1,542 @@
+/* ==========================================================
+   Portfolio - Shubham Biradar
+   Theme: white and dark navy
+   ========================================================== */
+
+/* ---------- Variables ---------- */
+:root {
+    --navy: #0b1d3a;
+    --navy-light: #16305c;
+    --accent: #2f6fed;
+    --white: #ffffff;
+    --bg-alt: #f2f5fb;
+    --text: #1d2a44;
+    --muted: #5b6784;
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(11, 29, 58, 0.1);
+}
+
+/* ---------- Reset and base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--navy);
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ---------- Header (Flexbox) ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--navy);
+    padding: 14px 0;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.logo:hover {
+    color: var(--white);
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.nav-list a {
+    color: var(--white);
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover {
+    color: var(--white);
+    border-bottom-color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: 2px solid var(--accent);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--white);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--navy);
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+.btn-small:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+/* ---------- Hero (Flexbox) ---------- */
+.hero {
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    color: var(--white);
+    padding: 80px 0;
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-hello {
+    color: #9db8ee;
+    font-size: 1.1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 6px 0 16px;
+}
+
+.hero-intro {
+    max-width: 520px;
+    margin-bottom: 28px;
+    color: #dde6f7;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* Profile photo as a CSS background: a missing file never shows a broken icon.
+   Each url() is a layer; layers that do not exist are simply skipped. */
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 6px solid var(--white);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    background-color: var(--navy-light);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* Initials: visible only when no photo file is found */
+.profile-initials {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 4px;
+}
+
+/* Photo layer sits on top of the initials and covers them when a file exists */
+.profile-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image:
+        url("images/profile.jpg"),
+        url("images/profile.jpeg"),
+        url("images/profile.png"),
+        url("images/profile.webp"),
+        url("images/Profile.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* ---------- Generic sections ---------- */
+.section {
+    padding: 70px 0;
+}
+
+.section-alt {
+    background: var(--bg-alt);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--navy);
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(11, 29, 58, 0.18);
+}
+
+.card h3 {
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.list li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.list li::before {
+    content: "\2022";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* ---------- About (Grid) ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* ---------- Skills (Grid) ---------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background: #dfe6f5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--navy-light));
+    border-radius: 6px;
+}
+
+.percent {
+    display: block;
+    margin-top: 6px;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* ---------- Projects (Grid) ---------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+}
+
+.project-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Project thumbnail: shows a placeholder until a screenshot file exists.
+   Add images/project1.jpg and images/project2.jpg to replace it. */
+.project-thumb {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.thumb-text {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.thumb-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.thumb-1 {
+    background-image: url("images/project1.jpg"), url("images/project1.png");
+}
+
+.thumb-2 {
+    background-image: url("images/project2.jpg"), url("images/project2.png");
+}
+
+.project-body {
+    padding: 22px;
+}
+
+.project-body p {
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+/* ---------- Contact (Grid) ---------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-info p {
+    margin-bottom: 14px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--white);
+    padding: 26px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border: 1px solid #c5cfe6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.2);
+}
+
+.contact-form .btn {
+    margin-top: 8px;
+    align-self: flex-start;
+}
+
+/* ---------- Footer (Flexbox) ---------- */
+.site-footer {
+    background: var(--navy);
+    color: #dde6f7;
+    padding: 24px 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.social-list {
+    display: flex;
+    gap: 20px;
+}
+
+.social-list a {
+    color: var(--white);
+}
+
+.social-list a:hover {
+    color: var(--accent);
+}
+
+/* ---------- Responsive: tablets ---------- */
+@media (max-width: 1000px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Responsive: mobile ---------- */
+@media (max-width: 600px) {
+    .header-inner {
+        flex-direction: column;
+    }
+
+    .nav-list {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero-inner {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-initials {
+        font-size: 3rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
